@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Sparkles, Layout, ShieldCheck, FileText, Calendar, Clock, Database, Activity } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const GithubIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -8,45 +8,37 @@ const GithubIcon = (props) => (
   </svg>
 );
 
-const DeviceMockup = ({ screenshot, url, children }) => {
+const LaptopMockup = ({ screenshot }) => {
   return (
-    <div className="w-full h-full bg-zinc-950 border border-white/[0.06] rounded-2xl overflow-hidden shadow-2xl relative flex flex-col group/device transition-all duration-500 hover:border-white/[0.12] hover:shadow-zinc-900/50 select-none">
-      {/* Browser Header */}
-      <div className="flex items-center justify-between px-3.5 py-2 bg-zinc-900/40 border-b border-white/[0.04] shrink-0 z-10">
-        <div className="flex space-x-1.5">
-          <span className="w-2 h-2 rounded-full bg-red-500/40" />
-          <span className="w-2 h-2 rounded-full bg-amber-500/40" />
-          <span className="w-2 h-2 rounded-full bg-emerald-500/40" />
+    <div className="w-full max-w-[460px] lg:max-w-[480px] mx-auto flex flex-col items-center select-none group/laptop">
+      {/* Laptop Screen / Display Lid */}
+      <div className="w-[90%] aspect-[1.6/1] bg-[#0a0a0b] border-[10px] border-[#18181b] rounded-t-2xl shadow-2xl relative flex flex-col overflow-hidden transition-all duration-500 group-hover/laptop:border-[#27272a]">
+        
+        {/* Web Camera Sensor */}
+        <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-black border border-white/5 flex items-center justify-center z-20">
+          <div className="w-0.5 h-0.5 rounded-full bg-blue-900/60" />
         </div>
-        <div className="text-[8px] font-mono text-zinc-500 bg-white/5 px-3 py-0.5 rounded border border-white/[0.02] max-w-[140px] truncate">
-          {url}
+
+        {/* Display Screen */}
+        <div className="flex-1 relative w-full h-full overflow-hidden bg-zinc-950">
+          <img 
+            src={screenshot} 
+            alt="App Display UI" 
+            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover/laptop:scale-105" 
+          />
+          {/* Subtle screen glare/reflection */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none z-10" />
         </div>
-        <div className="w-6" />
       </div>
 
-      {/* Screen Frame */}
-      <div className="flex-1 relative overflow-hidden bg-zinc-950 flex items-center justify-center min-h-0">
-        {screenshot ? (
-          <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <img 
-              src={screenshot} 
-              alt="App UI Screenshot" 
-              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover/device:scale-105 filter brightness-[0.55] group-hover/device:brightness-[0.75]" 
-            />
-            {/* Dark gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent pointer-events-none" />
-          </div>
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black flex items-center justify-center p-4">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(124,58,237,0.06),transparent_50%)]" />
-          </div>
-        )}
-        
-        {/* Floating details / widgets */}
-        <div className="relative w-full h-full p-4 flex flex-col justify-end z-10 min-h-0">
-          {children}
-        </div>
+      {/* Laptop Keyboard Base & Hinge */}
+      <div className="w-full h-[12px] bg-gradient-to-b from-[#2d2d30] to-[#18181b] rounded-t-[2px] rounded-b-[12px] border-t border-[#464649] relative shadow-lg">
+        {/* Front Opening Notch */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-[#121214] rounded-b-[3px]" />
       </div>
+
+      {/* Shadow base depth */}
+      <div className="w-[94%] h-[6px] bg-black/40 rounded-full blur-[4px] mt-[1px] transition-all duration-500 group-hover/laptop:w-[96%] group-hover/laptop:bg-black/60" />
     </div>
   );
 };
@@ -66,30 +58,7 @@ const projects = [
       'Task verification & cloud file backups',
       'Granular dashboards for employees and administrators'
     ],
-    mockup: (
-      <DeviceMockup screenshot="/projects/workforce.png" url="workforce-review.io">
-        <div className="space-y-2 max-w-[90%] mx-auto mb-1">
-          {/* Punch Card Status */}
-          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500">
-            <div className="flex items-center justify-between text-[8px]">
-              <div className="flex items-center space-x-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="font-bold text-emerald-400 font-mono">PUNCHED IN</span>
-              </div>
-              <span className="text-zinc-500 font-mono text-[7px]">Active Shift</span>
-            </div>
-          </div>
-          {/* Deliverable Badge */}
-          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 text-[8px] space-y-1.5">
-            <span className="text-zinc-400 font-semibold block text-[7px] uppercase tracking-wide">Recent Upload</span>
-            <div className="flex justify-between border-b border-white/5 pb-1">
-              <span className="text-zinc-300">Firebase_Listener_Fix.js</span>
-              <span className="text-emerald-400 font-medium font-mono text-[7px]">VERIFIED</span>
-            </div>
-          </div>
-        </div>
-      </DeviceMockup>
-    )
+    screenshot: '/projects/workforce.png'
   },
   {
     title: 'SwasthyaSetu',
@@ -105,28 +74,7 @@ const projects = [
       'Standard parameter detection comparisons',
       'Odisha-inspired UI and dual English/Odia structural design'
     ],
-    mockup: (
-      <DeviceMockup screenshot="/projects/swasthyasetu.png" url="swasthyasetu.care">
-        <div className="space-y-2 max-w-[90%] mx-auto mb-1">
-          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500 space-y-1">
-            <div className="flex justify-between items-center text-[7px] text-zinc-400">
-              <span className="font-semibold">Hemoglobin (Hb)</span>
-              <span>Range: 13-17 g/dL</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-xs font-bold text-red-400 font-display">11.2 g/dL</span>
-              <span className="px-1 py-0.5 rounded bg-red-500/10 border border-red-500/20 text-red-400 text-[7px] font-bold">LOW</span>
-            </div>
-          </div>
-          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 flex items-center space-x-1.5">
-            <Activity className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-            <span className="text-[7px] text-zinc-300 leading-tight">
-              Insight: ଲୋହିତ ରକ୍ତ କଣିକା ସାଧାରଣ ସ୍ତରରୁ କମ ଅଛି.
-            </span>
-          </div>
-        </div>
-      </DeviceMockup>
-    )
+    screenshot: '/projects/swasthyasetu.png'
   },
   {
     title: 'GenX Timetable Routine System',
@@ -142,29 +90,7 @@ const projects = [
       'Dynamic teacher availability matrix',
       'Vercel deployment hosting optimizations'
     ],
-    mockup: (
-      <DeviceMockup screenshot="/projects/genx.png" url="genx-timetable.io">
-        <div className="space-y-2 max-w-[90%] mx-auto mb-1">
-          <div className="grid grid-cols-2 gap-1.5 text-[7px] transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500">
-            <div className="bg-zinc-900/95 border border-white/10 p-1.5 rounded-lg backdrop-blur-md">
-              <span className="text-zinc-500 block font-semibold text-[6px]">SLOT 1 (09:00 AM)</span>
-              <span className="text-white block font-mono font-medium">Physics - Class A</span>
-            </div>
-            <div className="bg-zinc-900/95 border border-white/10 p-1.5 rounded-lg backdrop-blur-md">
-              <span className="text-zinc-500 block font-semibold text-[6px]">SLOT 2 (10:30 AM)</span>
-              <span className="text-white block font-mono font-medium">Chemistry - Class B</span>
-            </div>
-          </div>
-          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 flex items-center justify-between text-[7px]">
-            <div className="flex items-center space-x-1">
-              <ShieldCheck className="w-3 h-3 text-emerald-400" />
-              <span className="text-emerald-400 font-bold">Conflict Check Passed</span>
-            </div>
-            <span className="text-zinc-500 font-mono">0 Conflicts</span>
-          </div>
-        </div>
-      </DeviceMockup>
-    )
+    screenshot: '/projects/genx.png'
   },
   {
     title: 'InstantPages',
@@ -180,25 +106,7 @@ const projects = [
       'Real-time Firestore backups & saves',
       'Modern, mobile-responsive layout templates'
     ],
-    mockup: (
-      <DeviceMockup screenshot="/projects/instantpages.png" url="instantpages.so">
-        <div className="space-y-2 max-w-[90%] mx-auto mb-1">
-          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500 flex justify-between items-center text-[7px]">
-            <span className="text-zinc-400">Drag & Drop block:</span>
-            <div className="bg-white/5 border border-white/10 px-2 py-0.5 rounded text-white font-mono">Hero Section</div>
-          </div>
-          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 flex items-center justify-between text-[7.5px]">
-            <div className="flex items-center space-x-1">
-              <Layout className="w-3 h-3 text-accentPurple" />
-              <span className="text-zinc-300 font-medium">Canvas Editor Live</span>
-            </div>
-            <div className="bg-gradient-to-r from-accentPurple to-pink-500 text-white font-bold px-2 py-0.5 rounded-full text-[6.5px]">
-              PAY WITH CASHFREE
-            </div>
-          </div>
-        </div>
-      </DeviceMockup>
-    )
+    screenshot: '/projects/instantpages.png'
   },
   {
     title: 'INTERNOVA',
@@ -214,29 +122,7 @@ const projects = [
       'Real-time job notification alerts',
       'Adaptive training paths & courses'
     ],
-    mockup: (
-      <DeviceMockup screenshot={null} url="internova.ai">
-        <div className="space-y-3 max-w-[90%] mx-auto mb-1 h-full flex flex-col justify-center">
-          <div className="grid grid-cols-2 gap-2 text-center text-[7.5px] transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500">
-            <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md">
-              <span className="text-zinc-500 uppercase block font-semibold text-[6.5px]">Match Score</span>
-              <span className="text-xs font-bold text-emerald-400 font-display">94%</span>
-            </div>
-            <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md">
-              <span className="text-zinc-500 uppercase block font-semibold text-[6.5px]">ATS Review</span>
-              <span className="text-xs font-bold text-accentBlue font-display">88/100</span>
-            </div>
-          </div>
-
-          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 flex items-center space-x-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span className="text-[7px] text-zinc-300 leading-tight">
-              AI Recommendation: Add context state management APIs for higher scores.
-            </span>
-          </div>
-        </div>
-      </DeviceMockup>
-    )
+    screenshot: '/projects/internova.png'
   }
 ];
 
@@ -343,9 +229,9 @@ function ProjectCard({ project, index }) {
       </div>
 
       {/* Visual Mockup Canvas */}
-      <div className={`flex-1 h-[260px] md:h-[300px] flex items-center justify-center order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'} group-hover:scale-[1.01] transition-transform duration-500 relative`}>
-        <div className="absolute inset-0 bg-radial-glow blur-2xl opacity-40 group-hover:opacity-75 transition-opacity duration-500" />
-        {project.mockup}
+      <div className={`flex-1 flex items-center justify-center order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'} group-hover:scale-[1.01] transition-transform duration-500 relative py-6`}>
+        <div className="absolute inset-0 bg-radial-glow blur-2xl opacity-40 group-hover:opacity-75 transition-opacity duration-500 pointer-events-none" />
+        <LaptopMockup screenshot={project.screenshot} />
       </div>
 
     </motion.div>
