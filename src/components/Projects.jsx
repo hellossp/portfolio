@@ -12,10 +12,10 @@ const LaptopMockup = ({ screenshot }) => {
   return (
     <div className="w-full max-w-[460px] lg:max-w-[480px] mx-auto flex flex-col items-center select-none group/laptop">
       {/* Laptop Screen / Display Lid */}
-      <div className="w-[90%] aspect-[1.6/1] bg-[#0a0a0b] border-[10px] border-[#18181b] rounded-t-2xl shadow-2xl relative flex flex-col overflow-hidden transition-all duration-500 group-hover/laptop:border-[#27272a]">
+      <div className="w-[92%] aspect-[2.05/1] bg-[#0a0a0b] border-[8px] border-[#18181b] rounded-t-2xl shadow-2xl relative flex flex-col overflow-hidden transition-all duration-500 group-hover/laptop:border-[#27272a]">
         
         {/* Web Camera Sensor */}
-        <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-black border border-white/5 flex items-center justify-center z-20">
+        <div className="absolute top-[2px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-black border border-white/5 flex items-center justify-center z-20">
           <div className="w-0.5 h-0.5 rounded-full bg-blue-900/60" />
         </div>
 
@@ -24,10 +24,10 @@ const LaptopMockup = ({ screenshot }) => {
           <img 
             src={screenshot} 
             alt="App Display UI" 
-            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover/laptop:scale-105" 
+            className="w-full h-full object-fill transition-transform duration-700 ease-out group-hover/laptop:scale-[1.02]" 
           />
           {/* Subtle screen glare/reflection */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent pointer-events-none z-10" />
         </div>
       </div>
 
