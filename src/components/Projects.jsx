@@ -10,7 +10,7 @@ const GithubIcon = (props) => (
 
 const projects = [
   {
-    title: 'Apex Workforce & Activity Tracker',
+    title: 'Workforce & Activity Tracker',
     tagline: 'Custom SaaS for Startup Operations',
     desc: 'Designed and built a full-stack operations dashboard for a startup client to manage team attendance and track deliverables. Enables administrators to verify tasks and monitor daily activity reports in real time.',
     tech: ['Next.js', 'Tailwind CSS', 'Firebase Auth', 'Cloud Firestore'],
@@ -31,7 +31,7 @@ const projects = [
             <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
             <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
           </div>
-          <div className="text-[9px] text-zinc-600 bg-white/5 px-4 py-0.5 rounded-md">apex-tracker.io/dashboard</div>
+          <div className="text-[9px] text-zinc-600 bg-white/5 px-4 py-0.5 rounded-md">workforce.io/dashboard</div>
           <div className="w-4" />
         </div>
 
