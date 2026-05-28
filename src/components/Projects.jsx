@@ -12,12 +12,10 @@ const LaptopMockup = ({ screenshot, url }) => {
   const cleanUrl = url ? url.replace('https://', '').replace('http://', '').split('/')[0] : 'localhost';
 
   return (
-    <div className="w-full max-w-[440px] lg:max-w-[460px] mx-auto flex flex-col items-center select-none relative">
-      {/* 3D Reflection base under laptop */}
-      <div className="absolute -bottom-6 w-[88%] h-[30px] bg-accentBlue/10 rounded-full blur-[30px] opacity-0 group-hover/laptop:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
+    <div className="w-full max-w-[440px] lg:max-w-[460px] mx-auto flex flex-col items-center select-none group/laptop">
       {/* Laptop Screen / Display Lid */}
-      <div className="w-[84%] aspect-[16/10] bg-[#0c0c0e] border-[8px] border-[#1e1e21] rounded-t-2xl shadow-2xl relative flex flex-col overflow-hidden z-10">
+      <div className="w-[90%] aspect-[16/9] bg-[#0c0c0e] border-[8px] border-[#1e1e21] rounded-t-2xl shadow-2xl relative flex flex-col overflow-hidden">
+        
         {/* Web Camera Sensor */}
         <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-black border border-white/5 flex items-center justify-center z-20">
           <div className="w-0.5 h-0.5 rounded-full bg-blue-900/60" />
@@ -38,12 +36,12 @@ const LaptopMockup = ({ screenshot, url }) => {
             <div className="w-5" />
           </div>
 
-          {/* Main Web Page Screenshot Display */}
-          <div className="flex-1 w-full relative overflow-hidden bg-[#0c0c0e] flex items-center justify-center">
+          {/* Main Web Page Screenshot Display (scrollable on hover) */}
+          <div className="flex-1 w-full relative overflow-hidden bg-[#0c0c0e]">
             <img 
               src={screenshot} 
               alt="App Display UI" 
-              className="w-full h-auto max-h-full object-contain" 
+              className="w-[132%] max-w-none absolute top-0 left-[-16%] transition-transform duration-[6000ms] ease-in-out group-hover/laptop:-translate-y-[10%]" 
             />
             {/* Subtle screen glare/reflection */}
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.015] to-transparent pointer-events-none z-10" />
@@ -51,27 +49,14 @@ const LaptopMockup = ({ screenshot, url }) => {
         </div>
       </div>
 
-      {/* Keyboard Base Deck (MacBook Style 3D Slanted Base) */}
-      <div 
-        className="w-[96%] h-[20px] bg-gradient-to-b from-[#2d2d30] via-[#242426] to-[#121213] border-t border-[#4c4c4f] rounded-b-xl relative shadow-2xl z-20"
-        style={{
-          transform: 'perspective(600px) rotateX(38deg)',
-          transformOrigin: 'top center',
-          marginTop: '-6px'
-        }}
-      >
-        {/* Recessed Keyboard well indentation */}
-        <div className="absolute top-[2px] left-1/2 -translate-x-1/2 w-[85%] h-[2px] bg-black/60 rounded" />
-        
-        {/* Trackpad Indentation */}
-        <div className="absolute top-[5px] left-1/2 -translate-x-1/2 w-[24%] h-[5px] bg-[#1d1d1f] rounded border border-black/45" />
-
+      {/* 2D Flat Keyboard Base Deck */}
+      <div className="w-[104%] h-[12px] bg-gradient-to-b from-[#2d2d30] via-[#242426] to-[#121213] border-t border-[#464649] rounded-b-xl relative shadow-lg">
         {/* Front Opening Notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-[3px] bg-zinc-950 rounded-b" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-[3px] bg-[#0c0c0e] rounded-b-md" />
       </div>
 
       {/* Shadow base depth */}
-      <div className="w-[96%] h-[8px] bg-black/60 rounded-full blur-[5px] mt-[2px]" />
+      <div className="w-[94%] h-[5px] bg-black/40 rounded-full blur-[3px] mt-[1.5px]" />
     </div>
   );
 };
@@ -175,10 +160,6 @@ function ProjectCard({ project, index }) {
 
   const isEven = index % 2 === 0;
 
-  // 3D Parallax Tilt calculations
-  const tiltX = hovered ? (coords.y - 150) / 12 : 0;
-  const tiltY = hovered ? (coords.x - 250) / 15 : 0;
-
   return (
     <motion.div
       ref={cardRef}
@@ -265,15 +246,8 @@ function ProjectCard({ project, index }) {
         </div>
       </div>
 
-      {/* Visual Mockup Canvas (3D Parallax Tilt container) */}
-      <div 
-        className={`flex-1 flex items-center justify-center order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'} relative py-6`}
-        style={{
-          transform: hovered ? `perspective(1000px) rotateX(${-tiltX}deg) rotateY(${tiltY}deg) scale(1.03)` : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)',
-          transition: hovered ? 'transform 0.08s ease-out' : 'transform 0.6s ease-in-out',
-          transformStyle: 'preserve-3d'
-        }}
-      >
+      {/* Visual Mockup Canvas (Static Flat 2D container) */}
+      <div className={`flex-1 flex items-center justify-center order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'} relative py-6`}>
         <div className="absolute inset-0 bg-radial-glow blur-2xl opacity-40 pointer-events-none animate-pulse-slow" />
         <LaptopMockup screenshot={project.screenshot} url={project.demo} />
       </div>
