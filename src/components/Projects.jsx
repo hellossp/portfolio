@@ -8,37 +8,60 @@ const GithubIcon = (props) => (
   </svg>
 );
 
-const LaptopMockup = ({ screenshot }) => {
+const LaptopMockup = ({ screenshot, url }) => {
+  // Extract host for browser mockup bar
+  const cleanUrl = url ? url.replace('https://', '').replace('http://', '').split('/')[0] : 'localhost';
+
   return (
     <div className="w-full max-w-[460px] lg:max-w-[480px] mx-auto flex flex-col items-center select-none group/laptop">
       {/* Laptop Screen / Display Lid */}
-      <div className="w-[92%] aspect-[2.05/1] bg-[#0a0a0b] border-[8px] border-[#18181b] rounded-t-2xl shadow-2xl relative flex flex-col overflow-hidden transition-all duration-500 group-hover/laptop:border-[#27272a]">
+      <div className="w-[90%] aspect-[16/10] bg-[#0a0a0b] border-[10px] border-[#1c1c1e] rounded-t-2xl shadow-2xl relative flex flex-col overflow-hidden">
         
         {/* Web Camera Sensor */}
-        <div className="absolute top-[2px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-black border border-white/5 flex items-center justify-center z-20">
+        <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-black border border-white/5 flex items-center justify-center z-20">
           <div className="w-0.5 h-0.5 rounded-full bg-blue-900/60" />
         </div>
 
-        {/* Display Screen */}
-        <div className="flex-1 relative w-full h-full overflow-hidden bg-zinc-950">
-          <img 
-            src={screenshot} 
-            alt="App Display UI" 
-            className="w-full h-full object-fill transition-transform duration-700 ease-out group-hover/laptop:scale-[1.02]" 
-          />
-          {/* Subtle screen glare/reflection */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent pointer-events-none z-10" />
+        {/* Display Screen Canvas */}
+        <div className="flex-1 relative w-full h-full overflow-hidden bg-zinc-950 flex flex-col">
+          {/* Virtual Browser Top Bar inside laptop screen */}
+          <div className="w-full h-4 bg-zinc-900 border-b border-white/[0.04] flex items-center px-2 justify-between shrink-0">
+            <div className="flex space-x-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500/40" />
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500/40" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/40" />
+            </div>
+            <div className="text-[6.5px] font-mono text-zinc-500 bg-white/5 px-2.5 py-0.5 rounded max-w-[120px] truncate scale-90 border border-white/[0.02]">
+              {cleanUrl}
+            </div>
+            <div className="w-5" />
+          </div>
+
+          {/* Main Web Page Screenshot Display */}
+          <div className="flex-1 w-full relative overflow-hidden bg-[#0c0c0e] flex items-center justify-center">
+            <img 
+              src={screenshot} 
+              alt="App Display UI" 
+              className="w-full h-auto max-h-full object-contain" 
+            />
+            {/* Subtle screen glare/reflection */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.015] to-transparent pointer-events-none z-10" />
+          </div>
         </div>
       </div>
 
-      {/* Laptop Keyboard Base & Hinge */}
-      <div className="w-full h-[12px] bg-gradient-to-b from-[#2d2d30] to-[#18181b] rounded-t-[2px] rounded-b-[12px] border-t border-[#464649] relative shadow-lg">
-        {/* Front Opening Notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-[#121214] rounded-b-[3px]" />
+      {/* Keyboard Base Deck (MacBook Style 3D Base) */}
+      <div className="w-[104%] h-[16px] bg-[#1d1d1f] border-t border-[#464648] rounded-b-xl relative shadow-2xl flex flex-col items-center">
+        {/* Recessed Keyboard Well Indentation */}
+        <div className="absolute top-[2px] w-[80%] h-[3px] bg-black/60 rounded-sm border-t border-black/40" />
+        {/* Trackpad Indentation */}
+        <div className="absolute top-[6px] w-[24%] h-[6px] bg-[#272729] rounded-sm border border-black/30" />
+        {/* Opening Notch / Screen Indentation */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-[4px] bg-[#0c0c0e] rounded-b-md" />
       </div>
 
       {/* Shadow base depth */}
-      <div className="w-[94%] h-[6px] bg-black/40 rounded-full blur-[4px] mt-[1px] transition-all duration-500 group-hover/laptop:w-[96%] group-hover/laptop:bg-black/60" />
+      <div className="w-[94%] h-[6px] bg-black/50 rounded-full blur-[4px] mt-[1px]" />
     </div>
   );
 };
@@ -178,7 +201,7 @@ function ProjectCard({ project, index }) {
             {project.tagline}
           </span>
 
-          <h3 className="text-2xl md:text-3xl font-display font-bold text-white mt-2 group-hover:translate-x-1 transition-transform duration-300">
+          <h3 className="text-2xl md:text-3xl font-display font-bold text-white mt-2 transition-transform duration-300">
             {project.title}
           </h3>
 
@@ -229,9 +252,9 @@ function ProjectCard({ project, index }) {
       </div>
 
       {/* Visual Mockup Canvas */}
-      <div className={`flex-1 flex items-center justify-center order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'} group-hover:scale-[1.01] transition-transform duration-500 relative py-6`}>
-        <div className="absolute inset-0 bg-radial-glow blur-2xl opacity-40 group-hover:opacity-75 transition-opacity duration-500 pointer-events-none" />
-        <LaptopMockup screenshot={project.screenshot} />
+      <div className={`flex-1 flex items-center justify-center order-1 ${isEven ? 'lg:order-2' : 'lg:order-1'} relative py-6`}>
+        <div className="absolute inset-0 bg-radial-glow blur-2xl opacity-40 pointer-events-none animate-pulse-slow" />
+        <LaptopMockup screenshot={project.screenshot} url={project.demo} />
       </div>
 
     </motion.div>
