@@ -8,6 +8,49 @@ const GithubIcon = (props) => (
   </svg>
 );
 
+const DeviceMockup = ({ screenshot, url, children }) => {
+  return (
+    <div className="w-full h-full bg-zinc-950 border border-white/[0.06] rounded-2xl overflow-hidden shadow-2xl relative flex flex-col group/device transition-all duration-500 hover:border-white/[0.12] hover:shadow-zinc-900/50 select-none">
+      {/* Browser Header */}
+      <div className="flex items-center justify-between px-3.5 py-2 bg-zinc-900/40 border-b border-white/[0.04] shrink-0 z-10">
+        <div className="flex space-x-1.5">
+          <span className="w-2 h-2 rounded-full bg-red-500/40" />
+          <span className="w-2 h-2 rounded-full bg-amber-500/40" />
+          <span className="w-2 h-2 rounded-full bg-emerald-500/40" />
+        </div>
+        <div className="text-[8px] font-mono text-zinc-500 bg-white/5 px-3 py-0.5 rounded border border-white/[0.02] max-w-[140px] truncate">
+          {url}
+        </div>
+        <div className="w-6" />
+      </div>
+
+      {/* Screen Frame */}
+      <div className="flex-1 relative overflow-hidden bg-zinc-950 flex items-center justify-center min-h-0">
+        {screenshot ? (
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
+            <img 
+              src={screenshot} 
+              alt="App UI Screenshot" 
+              className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover/device:scale-105 filter brightness-[0.55] group-hover/device:brightness-[0.75]" 
+            />
+            {/* Dark gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent pointer-events-none" />
+          </div>
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(124,58,237,0.06),transparent_50%)]" />
+          </div>
+        )}
+        
+        {/* Floating details / widgets */}
+        <div className="relative w-full h-full p-4 flex flex-col justify-end z-10 min-h-0">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const projects = [
   {
     title: 'Workforce & Activity Tracker',
@@ -24,41 +67,28 @@ const projects = [
       'Granular dashboards for employees and administrators'
     ],
     mockup: (
-      <div className="w-full h-full bg-zinc-950 border border-white/5 rounded-2xl p-4 flex flex-col justify-between overflow-hidden shadow-2xl relative select-none">
-        <div className="flex items-center justify-between pb-3 border-b border-white/5 mb-2">
-          <div className="flex space-x-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-          </div>
-          <div className="text-[9px] text-zinc-600 bg-white/5 px-4 py-0.5 rounded-md">workforce.io/dashboard</div>
-          <div className="w-4" />
-        </div>
-
-        <div className="flex-1 space-y-3">
-          {/* Real-time Punch Status */}
-          <div className="flex items-center justify-between bg-emerald-500/5 border border-emerald-500/20 p-2 rounded-lg">
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span className="text-[9px] font-bold text-emerald-400 font-mono">PUNCHED IN</span>
+      <DeviceMockup screenshot="/projects/workforce.png" url="workforce-review.io">
+        <div className="space-y-2 max-w-[90%] mx-auto mb-1">
+          {/* Punch Card Status */}
+          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500">
+            <div className="flex items-center justify-between text-[8px]">
+              <div className="flex items-center space-x-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="font-bold text-emerald-400 font-mono">PUNCHED IN</span>
+              </div>
+              <span className="text-zinc-500 font-mono text-[7px]">Active Shift</span>
             </div>
-            <span className="text-[8px] text-zinc-400 font-mono">09:15 AM - Today</span>
           </div>
-
-          {/* Employee Report table preview */}
-          <div className="bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg text-[8px] space-y-2">
-            <span className="text-[9px] font-semibold text-zinc-400 block">Daily Work Report Submission</span>
+          {/* Deliverable Badge */}
+          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 text-[8px] space-y-1.5">
+            <span className="text-zinc-400 font-semibold block text-[7px] uppercase tracking-wide">Recent Upload</span>
             <div className="flex justify-between border-b border-white/5 pb-1">
-              <span className="text-zinc-500">Report_28May.pdf</span>
-              <span className="text-emerald-400 font-medium">Uploaded</span>
-            </div>
-            <div className="flex justify-between text-zinc-500">
-              <span>Task Description</span>
-              <span className="text-zinc-300">Firebase listeners setup</span>
+              <span className="text-zinc-300">Firebase_Listener_Fix.js</span>
+              <span className="text-emerald-400 font-medium font-mono text-[7px]">VERIFIED</span>
             </div>
           </div>
         </div>
-      </div>
+      </DeviceMockup>
     )
   },
   {
@@ -76,39 +106,26 @@ const projects = [
       'Odisha-inspired UI and dual English/Odia structural design'
     ],
     mockup: (
-      <div className="w-full h-full bg-zinc-950 border border-white/5 rounded-2xl p-4 flex flex-col justify-between overflow-hidden shadow-2xl relative select-none">
-        <div className="flex items-center justify-between pb-3 border-b border-white/5 mb-2">
-          <div className="flex space-x-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-          </div>
-          <div className="text-[9px] text-zinc-600 bg-white/5 px-4 py-0.5 rounded-md">swasthyasetu.care/analyze</div>
-          <div className="w-4" />
-        </div>
-
-        <div className="flex-1 space-y-2">
-          {/* Medical metric rows */}
-          <div className="bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg space-y-2">
-            <div className="flex justify-between items-center text-[8px]">
-              <span className="font-semibold text-zinc-300">Hemoglobin (Hb)</span>
-              <span className="text-zinc-500">Normal Range: 13-17 g/dL</span>
+      <DeviceMockup screenshot="/projects/swasthyasetu.png" url="swasthyasetu.care">
+        <div className="space-y-2 max-w-[90%] mx-auto mb-1">
+          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500 space-y-1">
+            <div className="flex justify-between items-center text-[7px] text-zinc-400">
+              <span className="font-semibold">Hemoglobin (Hb)</span>
+              <span>Range: 13-17 g/dL</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs font-bold text-red-400 font-display">11.2 g/dL</span>
-              <span className="px-1.5 py-0.5 rounded bg-red-500/10 border border-red-500/20 text-red-400 text-[8px] font-bold">LOW</span>
+              <span className="px-1 py-0.5 rounded bg-red-500/10 border border-red-500/20 text-red-400 text-[7px] font-bold">LOW</span>
             </div>
           </div>
-
-          {/* Odia translation info */}
-          <div className="p-2 rounded bg-emerald-500/5 border border-emerald-500/10 flex items-center space-x-2">
-            <Activity className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span className="text-[7.5px] text-zinc-400 leading-tight">
-              Insight: ଲୋହିତ ରକ୍ତ କଣିକା ସାଧାରଣ ସ୍ତରରୁ କମ ଅଛି (Increase iron intake).
+          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 flex items-center space-x-1.5">
+            <Activity className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <span className="text-[7px] text-zinc-300 leading-tight">
+              Insight: ଲୋହିତ ରକ୍ତ କଣିକା ସାଧାରଣ ସ୍ତରରୁ କମ ଅଛି.
             </span>
           </div>
         </div>
-      </div>
+      </DeviceMockup>
     )
   },
   {
@@ -126,40 +143,27 @@ const projects = [
       'Vercel deployment hosting optimizations'
     ],
     mockup: (
-      <div className="w-full h-full bg-zinc-950 border border-white/5 rounded-2xl p-4 flex flex-col justify-between overflow-hidden shadow-2xl relative select-none">
-        <div className="flex items-center justify-between pb-3 border-b border-white/5 mb-2">
-          <div className="flex space-x-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-          </div>
-          <div className="text-[9px] text-zinc-600 bg-white/5 px-4 py-0.5 rounded-md">genx-timetable.io/planner</div>
-          <div className="w-4" />
-        </div>
-
-        <div className="flex-1 space-y-2.5">
-          {/* Scheduling slots grid */}
-          <div className="grid grid-cols-2 gap-2 text-[8px]">
-            <div className="bg-white/[0.02] border border-white/[0.05] p-1.5 rounded">
-              <span className="text-zinc-500 block font-semibold">Slot 1 (09:00 AM)</span>
-              <span className="text-white block font-mono">Physics - Class A</span>
+      <DeviceMockup screenshot="/projects/genx.png" url="genx-timetable.io">
+        <div className="space-y-2 max-w-[90%] mx-auto mb-1">
+          <div className="grid grid-cols-2 gap-1.5 text-[7px] transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500">
+            <div className="bg-zinc-900/95 border border-white/10 p-1.5 rounded-lg backdrop-blur-md">
+              <span className="text-zinc-500 block font-semibold text-[6px]">SLOT 1 (09:00 AM)</span>
+              <span className="text-white block font-mono font-medium">Physics - Class A</span>
             </div>
-            <div className="bg-white/[0.02] border border-white/[0.05] p-1.5 rounded">
-              <span className="text-zinc-500 block font-semibold">Slot 2 (10:30 AM)</span>
-              <span className="text-white block font-mono">Chemistry - Class B</span>
+            <div className="bg-zinc-900/95 border border-white/10 p-1.5 rounded-lg backdrop-blur-md">
+              <span className="text-zinc-500 block font-semibold text-[6px]">SLOT 2 (10:30 AM)</span>
+              <span className="text-white block font-mono font-medium">Chemistry - Class B</span>
             </div>
           </div>
-
-          {/* Conflict status indicator */}
-          <div className="bg-emerald-500/5 border border-emerald-500/10 p-2 rounded flex items-center justify-between text-[8px]">
+          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 flex items-center justify-between text-[7px]">
             <div className="flex items-center space-x-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-emerald-400 font-bold">Conflict check completed</span>
+              <ShieldCheck className="w-3 h-3 text-emerald-400" />
+              <span className="text-emerald-400 font-bold">Conflict Check Passed</span>
             </div>
             <span className="text-zinc-500 font-mono">0 Conflicts</span>
           </div>
         </div>
-      </div>
+      </DeviceMockup>
     )
   },
   {
@@ -177,34 +181,23 @@ const projects = [
       'Modern, mobile-responsive layout templates'
     ],
     mockup: (
-      <div className="w-full h-full bg-zinc-950 border border-white/5 rounded-2xl p-4 flex flex-col justify-between overflow-hidden shadow-2xl relative select-none">
-        <div className="flex items-center justify-between pb-3 border-b border-white/5 mb-2">
-          <div className="flex space-x-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+      <DeviceMockup screenshot="/projects/instantpages.png" url="instantpages.so">
+        <div className="space-y-2 max-w-[90%] mx-auto mb-1">
+          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500 flex justify-between items-center text-[7px]">
+            <span className="text-zinc-400">Drag & Drop block:</span>
+            <div className="bg-white/5 border border-white/10 px-2 py-0.5 rounded text-white font-mono">Hero Section</div>
           </div>
-          <div className="text-[9px] text-zinc-600 bg-white/5 px-4 py-0.5 rounded-md">instantpages.so/editor</div>
-          <div className="w-4" />
-        </div>
-
-        <div className="flex-1 flex gap-2">
-          {/* Components sidebar mockup */}
-          <div className="w-1/3 border-r border-white/5 pr-1.5 space-y-1.5 text-[7px] text-zinc-500 font-semibold uppercase">
-            <span>Blocks</span>
-            <div className="bg-white/[0.02] border border-white/5 p-1 rounded text-zinc-300">Hero Section</div>
-            <div className="bg-white/[0.02] border border-white/5 p-1 rounded text-zinc-300">Pricing Grid</div>
-          </div>
-          {/* Main dropzone mockup */}
-          <div className="flex-1 border border-dashed border-white/10 rounded-lg p-2 flex flex-col justify-center items-center">
-            <Layout className="w-4 h-4 text-accentPurple animate-float" />
-            <span className="text-[8px] text-zinc-400 font-medium mt-1">Live Builder Canvas</span>
-            <div className="mt-2 bg-accentPurple text-[7px] font-semibold text-white px-2 py-0.5 rounded shadow">
-              Pay with Cashfree
+          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 flex items-center justify-between text-[7.5px]">
+            <div className="flex items-center space-x-1">
+              <Layout className="w-3 h-3 text-accentPurple" />
+              <span className="text-zinc-300 font-medium">Canvas Editor Live</span>
+            </div>
+            <div className="bg-gradient-to-r from-accentPurple to-pink-500 text-white font-bold px-2 py-0.5 rounded-full text-[6.5px]">
+              PAY WITH CASHFREE
             </div>
           </div>
         </div>
-      </div>
+      </DeviceMockup>
     )
   },
   {
@@ -222,37 +215,27 @@ const projects = [
       'Adaptive training paths & courses'
     ],
     mockup: (
-      <div className="w-full h-full bg-zinc-950 border border-white/5 rounded-2xl p-4 flex flex-col justify-between overflow-hidden shadow-2xl relative select-none">
-        <div className="flex items-center justify-between pb-3 border-b border-white/5 mb-2">
-          <div className="flex space-x-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-          </div>
-          <div className="text-[9px] text-zinc-600 bg-white/5 px-4 py-0.5 rounded-md">internova.ai/dashboard</div>
-          <div className="w-4" />
-        </div>
-
-        <div className="flex-1 space-y-2">
-          <div className="grid grid-cols-2 gap-2 text-center text-[8px]">
-            <div className="bg-white/[0.02] border border-white/[0.04] p-1.5 rounded">
-              <span className="text-zinc-500 uppercase block font-semibold">Match Score</span>
+      <DeviceMockup screenshot={null} url="internova.ai">
+        <div className="space-y-3 max-w-[90%] mx-auto mb-1 h-full flex flex-col justify-center">
+          <div className="grid grid-cols-2 gap-2 text-center text-[7.5px] transform -translate-y-1 group-hover/device:translate-y-[-6px] transition-transform duration-500">
+            <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md">
+              <span className="text-zinc-500 uppercase block font-semibold text-[6.5px]">Match Score</span>
               <span className="text-xs font-bold text-emerald-400 font-display">94%</span>
             </div>
-            <div className="bg-white/[0.02] border border-white/[0.04] p-1.5 rounded">
-              <span className="text-zinc-500 uppercase block font-semibold">ATS Review</span>
-              <span className="text-xs font-bold text-accentBlue font-display">88 / 100</span>
+            <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md">
+              <span className="text-zinc-500 uppercase block font-semibold text-[6.5px]">ATS Review</span>
+              <span className="text-xs font-bold text-accentBlue font-display">88/100</span>
             </div>
           </div>
 
-          <div className="bg-white/[0.02] border border-white/[0.05] p-2 rounded flex items-center space-x-1.5">
-            <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-            <span className="text-[8px] text-zinc-400 leading-tight">
-              AI Tip: Highlight context state management APIs for higher scores.
+          <div className="bg-zinc-900/90 border border-white/10 p-2 rounded-xl backdrop-blur-md shadow-lg transform translate-y-1 group-hover/device:translate-y-0 transition-transform duration-500 flex items-center space-x-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+            <span className="text-[7px] text-zinc-300 leading-tight">
+              AI Recommendation: Add context state management APIs for higher scores.
             </span>
           </div>
         </div>
-      </div>
+      </DeviceMockup>
     )
   }
 ];
