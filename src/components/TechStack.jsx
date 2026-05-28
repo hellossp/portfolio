@@ -27,6 +27,28 @@ const skills = [
     )
   },
   {
+    name: 'Express.js',
+    category: 'Framework',
+    desc: 'Minimalist Node.js web application framework for routing and middleware APIs.',
+    icon: (
+      <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 8h6M4 12h5M4 16h6" />
+        <path d="M14 8l6 8M20 8l-6 8" />
+        <rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 1" />
+      </svg>
+    )
+  },
+  {
+    name: 'MongoDB',
+    category: 'Database',
+    desc: 'Document-based NoSQL database, schema design, and aggregation pipelines.',
+    icon: (
+      <svg className="w-8 h-8 text-emerald-500" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.18 10.37c-.52-1.9-1.57-3.95-2.92-5.74-.26-.35-.7-.35-.96 0-2.31 3.06-3.8 6.55-3.8 10.35 0 3.63 1.83 6.07 4.28 7.02.26.1.53-.1.53-.38v-4.14c0-.28.22-.5.5-.5s.5.22.5.5v4.14c0 .28.27.48.53.38 2.45-.95 4.28-3.39 4.28-7.02 0-1.85-.35-3.48-.94-4.61zm-3.68 7.74v-1.61c0-.28-.22-.5-.5-.5s-.5.22-.5.5v1.61c-1.3-.61-2.22-2.14-2.22-4.61 0-3 .93-5.83 2.72-8.35 1.79 2.52 2.72 5.35 2.72 8.35 0 2.47-.92 4-2.22 4.61z"/>
+      </svg>
+    )
+  },
+  {
     name: 'Tailwind CSS',
     category: 'Styling',
     desc: 'Utility-first utility system, responsive fluid design.',
