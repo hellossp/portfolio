@@ -13,12 +13,6 @@ export default function Footer() {
             © {currentYear} Sitansu Sekhar Panda. All rights reserved.
           </p>
         </div>
-
-        {/* Tech Label */}
-        <div className="flex flex-col items-center md:items-end text-center md:text-right text-[10px] text-zinc-500 font-mono">
-          <span>Built with React + Vite + Tailwind CSS</span>
-          <span className="text-zinc-600 mt-0.5">Animated using Framer Motion</span>
-        </div>
       </div>
     </footer>
   );
