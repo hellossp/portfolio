@@ -18,6 +18,13 @@ import LoadingScreen from './components/LoadingScreen';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
+  // Disable browser's automatic scroll restoration on load
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
   // Auto-terminate loading screen after 2.2 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,6 +32,24 @@ function App() {
     }, 2200);
     return () => clearTimeout(timer);
   }, []);
+
+  // Handle scroll on load / refresh once content is ready
+  useEffect(() => {
+    if (!isLoading) {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          // Slight delay to allow DOM render & animations to start
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+          return;
+        }
+      }
+      window.scrollTo(0, 0);
+    }
+  }, [isLoading]);
 
   return (
     <>

@@ -21,11 +21,16 @@ export default function Hero() {
     'Type a command or select a quick option below to interact.',
   ]);
   const [activeParticles, setActiveParticles] = useState([]);
-  const terminalBottomRef = useRef(null);
+  const logsContainerRef = useRef(null);
 
   // Auto-scroll terminal
   useEffect(() => {
-    terminalBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (logsContainerRef.current) {
+      logsContainerRef.current.scrollTo({
+        top: logsContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   }, [terminalLogs]);
 
   // Execute terminal command logic
@@ -231,7 +236,10 @@ export default function Hero() {
             </div>
 
             {/* Scrollable logs */}
-            <div className="h-28 overflow-y-auto space-y-1.5 pr-2 custom-scrollbar text-left scrollbar-thin scrollbar-thumb-zinc-800">
+            <div
+              ref={logsContainerRef}
+              className="h-28 overflow-y-auto space-y-1.5 pr-2 custom-scrollbar text-left scrollbar-thin scrollbar-thumb-zinc-800"
+            >
               {terminalLogs.map((log, idx) => (
                 <div
                   key={idx}
@@ -246,7 +254,6 @@ export default function Hero() {
                   {log}
                 </div>
               ))}
-              <div ref={terminalBottomRef} />
             </div>
 
             {/* Command Input Form */}
