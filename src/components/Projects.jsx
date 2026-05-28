@@ -10,18 +10,18 @@ const GithubIcon = (props) => (
 
 const projects = [
   {
-    title: 'Bhionix Attendance & Work Tracker',
-    tagline: 'Freelance Intern Management Platform',
-    desc: 'Designed and deployed a full-stack dashboard for tracking work reports and attendance. HR administrators can verify work deliverables and monitor daily logs with real-time accuracy.',
+    title: 'Bhionix Workforce & Activity Tracker',
+    tagline: 'Custom SaaS for Startup Operations',
+    desc: 'Designed and built a full-stack operations dashboard for a startup client to manage team attendance and track deliverables. Enables administrators to verify tasks and monitor daily activity reports in real time.',
     tech: ['Next.js', 'Tailwind CSS', 'Firebase Auth', 'Cloud Firestore'],
     github: 'https://github.com/hellossp',
     demo: 'https://work-review-system.vercel.app/',
     color: 'from-accentBlue to-indigo-500',
     features: [
-      'Digital punch in/out attendance flow',
+      'Real-time punch in/out attendance flow',
       'Daily work report submission pipeline',
-      'Work proof image uploads & backups',
-      'Dedicated dashboards for interns and HR admins'
+      'Task verification & cloud file backups',
+      'Granular dashboards for employees and administrators'
     ],
     mockup: (
       <div className="w-full h-full bg-zinc-950 border border-white/5 rounded-2xl p-4 flex flex-col justify-between overflow-hidden shadow-2xl relative select-none">
@@ -45,9 +45,9 @@ const projects = [
             <span className="text-[8px] text-zinc-400 font-mono">09:15 AM - Today</span>
           </div>
 
-          {/* Intern Report table preview */}
+          {/* Employee Report table preview */}
           <div className="bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg text-[8px] space-y-2">
-            <span className="text-[9px] font-semibold text-zinc-400 block">Daily Report Submission</span>
+            <span className="text-[9px] font-semibold text-zinc-400 block">Daily Work Report Submission</span>
             <div className="flex justify-between border-b border-white/5 pb-1">
               <span className="text-zinc-500">Report_28May.pdf</span>
               <span className="text-emerald-400 font-medium">Uploaded</span>
