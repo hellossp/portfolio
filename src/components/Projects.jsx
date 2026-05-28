@@ -14,7 +14,7 @@ const LaptopMockup = ({ screenshot, url, animateOnHover }) => {
   return (
     <div className="w-full max-w-[440px] lg:max-w-[460px] mx-auto flex flex-col items-center select-none group/laptop">
       {/* Laptop Screen / Display Lid */}
-      <div className="w-[90%] aspect-[16/10] bg-[#0c0c0e] border-[8px] border-[#1e1e21] rounded-t-2xl shadow-2xl relative flex flex-col overflow-hidden">
+      <div className="w-[90%] aspect-[16/8.5] bg-[#0c0c0e] border-[8px] border-[#1e1e21] rounded-t-2xl shadow-2xl relative flex flex-col overflow-hidden">
         
         {/* Web Camera Sensor */}
         <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-black border border-white/5 flex items-center justify-center z-20">
@@ -41,7 +41,7 @@ const LaptopMockup = ({ screenshot, url, animateOnHover }) => {
             <img 
               src={screenshot} 
               alt="App Display UI" 
-              className={`w-full h-auto absolute top-0 left-0 transition-transform duration-[6000ms] ease-in-out ${animateOnHover ? 'group-hover/laptop:-translate-y-[15%]' : ''}`} 
+              className={`w-full h-auto absolute top-0 left-0 transition-transform duration-[6000ms] ease-in-out ${animateOnHover ? 'group-hover/laptop:-translate-y-[5%]' : ''}`} 
             />
             {/* Subtle screen glare/reflection */}
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.015] to-transparent pointer-events-none z-10" />
