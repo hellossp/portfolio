@@ -31,7 +31,7 @@ export default function BackgroundGrid() {
       {/* Static Ambient Gradients */}
       <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-accentPurple/10 blur-[120px]" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-accentBlue/10 blur-[120px]" />
-      <div className="absolute top-[40%] left-[60%] w-[35vw] h-[35vw] rounded-full bg-purple-500/5 blur-[100px]" />
+      <div className="absolute top-[40%] left-[60%] w-[35vw] h-[35vw] rounded-full bg-emerald-500/5 blur-[100px]" />
 
       {/* Dynamic Mouse Tracker Glow */}
       <div

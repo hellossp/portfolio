@@ -159,7 +159,7 @@ function SpotlightCard({ skill }) {
       <div
         className="pointer-events-none absolute -inset-px rounded-2xl transition-opacity duration-300"
         style={{
-          background: `radial-gradient(150px circle at ${coords.x}px ${coords.y}px, rgba(124, 58, 237, 0.08) 0%, rgba(59, 130, 246, 0.04) 50%, transparent 100%)`,
+          background: `radial-gradient(150px circle at ${coords.x}px ${coords.y}px, rgba(16, 185, 129, 0.08) 0%, rgba(5, 150, 105, 0.04) 50%, transparent 100%)`,
           opacity: hovered ? 1 : 0,
         }}
       />

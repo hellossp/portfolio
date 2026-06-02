@@ -15,17 +15,77 @@ const LinkedinIcon = (props) => (
 );
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    projectType: '',
+    budget: '',
+    timeline: '',
+    message: ''
+  });
   const [status, setStatus] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      setForm({ name: '', email: '', message: '' });
-    }, 1500);
+
+    // Replace this with your Web3Forms Access Key from https://web3forms.com/
+    // (It takes 10 seconds to get one sent to sitansupanda791@gmail.com)
+    const ACCESS_KEY = "abadc18b-7389-42d8-88e5-b0e01f2ac477"; 
+
+    if (!ACCESS_KEY || ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
+      // Fallback/Demo mode if key is not pasted yet
+      setTimeout(() => {
+        setStatus('success');
+        setForm({
+          name: '',
+          email: '',
+          projectType: '',
+          budget: '',
+          timeline: '',
+          message: ''
+        });
+      }, 1500);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          name: form.name,
+          email: form.email,
+          project_type: form.projectType,
+          budget: form.budget,
+          timeline: form.timeline,
+          message: form.message,
+          subject: `New Freelance Inquiry from ${form.name}`
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus('success');
+        setForm({
+          name: '',
+          email: '',
+          projectType: '',
+          budget: '',
+          timeline: '',
+          message: ''
+        });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -40,21 +100,21 @@ export default function Contact() {
           <span className="text-xs uppercase tracking-widest text-accentBlue font-bold font-display">Get In Touch</span>
           <h2 className="mt-2 text-3xl md:text-5xl font-display font-bold tracking-tight text-white">
             Let’s Build Something <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accentBlue to-accentPurple drop-shadow-[0_0_15px_rgba(124,58,237,0.25)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accentBlue to-accentPurple drop-shadow-[0_0_15px_rgba(16,185,129,0.25)]">
               Amazing Together
             </span>
           </h2>
           <p className="mt-4 text-sm md:text-base text-zinc-400 font-light leading-relaxed">
-            Have a project, an internship opportunity, or just want to say hi? Drop a line and let's start the conversation.
+            Have an idea, project requirements, or a consulting need? Fill out the details below to receive a custom proposal and quote.
           </p>
         </div>
 
         {/* Form and Contact Details Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Details Column - 5 cols */}
           <div className="lg:col-span-5 space-y-6">
-            
+
             {/* Location Card */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -135,7 +195,7 @@ export default function Contact() {
             className="lg:col-span-7 glass-card rounded-3xl p-8 border border-white/[0.05]"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Name</label>
@@ -146,7 +206,7 @@ export default function Contact() {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Enter your name"
-                    className="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
+                    className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
                   />
                 </div>
                 <div>
@@ -158,21 +218,58 @@ export default function Contact() {
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     placeholder="name@company.com"
-                    className="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
+                    className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
+                  />
+                </div>
+              </div>              {/* Freelance Specific Lead Qualifiers */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <label htmlFor="projectType" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Project Type</label>
+                  <input
+                    type="text"
+                    id="projectType"
+                    value={form.projectType}
+                    onChange={(e) => setForm({ ...form, projectType: e.target.value })}
+                    placeholder="e.g. Gym Portal, SaaS, Clinic Site"
+                    className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="budget" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Est. Budget</label>
+                  <input
+                    type="text"
+                    id="budget"
+                    value={form.budget}
+                    onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                    placeholder="e.g. $1,000, Flexible, etc."
+                    className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="timeline" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Est. Timeline</label>
+                  <input
+                    type="text"
+                    id="timeline"
+                    value={form.timeline}
+                    onChange={(e) => setForm({ ...form, timeline: e.target.value })}
+                    placeholder="e.g. 3 weeks, Flexible, etc."
+                    className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Message</label>
+                <label htmlFor="message" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Project Brief / Description</label>
                 <textarea
                   id="message"
                   required
                   rows="4"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  placeholder="Tell me about your project, role, or ideas..."
-                  className="w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300 resize-none"
+                  placeholder="Tell me about your product requirements, user goals, and how I can help..."
+                  className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300 resize-none"
                 />
               </div>
 
@@ -182,15 +279,19 @@ export default function Contact() {
                 className="w-full inline-flex justify-center items-center space-x-2 px-8 py-4 rounded-xl font-semibold bg-white text-black hover:bg-zinc-200 transition-all duration-300 disabled:opacity-50"
               >
                 {status === 'sending' ? (
-                  <span>Sending Message...</span>
+                  <span>Submitting Inquiry...</span>
                 ) : status === 'success' ? (
                   <span className="flex items-center space-x-1.5 text-emerald-600 font-bold">
                     <Sparkles className="w-4.5 h-4.5 animate-pulse" />
-                    <span>Message Sent!</span>
+                    <span>Inquiry Submitted!</span>
+                  </span>
+                ) : status === 'error' ? (
+                  <span className="flex items-center space-x-1.5 text-red-500 font-bold">
+                    <span>Submission Failed. Try Again!</span>
                   </span>
                 ) : (
                   <>
-                    <span>Send Message</span>
+                    <span>Submit Inquiry</span>
                     <Send className="w-4 h-4" />
                   </>
                 )}

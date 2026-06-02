@@ -44,11 +44,22 @@ export default function Hero() {
     switch (cleanCmd) {
       case '/help':
         response.push('Available commands:');
+        response.push('  /services - See my freelance service packages');
         response.push('  /skills   - Display primary technology toolkit');
         response.push('  /projects - Scroll down to projects portfolio');
-        response.push('  /about    - Scroll down to professional bio');
+        response.push('  /process  - Learn how I run custom client projects');
         response.push('  /matrix   - Trigger glowing neon screen cascades');
         response.push('  /clear    - Flush terminal console history');
+        break;
+      case '/services':
+        response.push('Freelance Offerings:');
+        response.push('  1. Custom MVP Development for Startups');
+        response.push('  2. Full-Stack SaaS Apps (React, Next.js, Node.js)');
+        response.push('  3. Third-party Integrations (Auth, DBs, Payment APIs)');
+        response.push('  4. Budget-Friendly Local Business Websites');
+        setTimeout(() => {
+          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+        }, 800);
         break;
       case '/skills':
         response.push('Core Stack: [Next.js, React, Tailwind, Firebase, Python, Node, OCR]');
@@ -60,11 +71,12 @@ export default function Hero() {
           document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
         }, 400);
         break;
-      case '/about':
-        response.push('Redirecting viewport to About section...');
+      case '/process':
+        response.push('My Development Cycle:');
+        response.push('  [Discovery -> Architecture -> Iterative Dev -> QA -> Deployment]');
         setTimeout(() => {
-          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-        }, 400);
+          document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' });
+        }, 800);
         break;
       case '/matrix':
         response.push('Spawning glowing electric particle streams...');
@@ -126,9 +138,9 @@ export default function Hero() {
           <motion.div
             key={p.id}
             initial={{ opacity: 0, y: '100vh', scale: 0.5 }}
-            animate={{ 
-              opacity: [0, 0.8, 0], 
-              y: '-20vh', 
+            animate={{
+              opacity: [0, 0.8, 0],
+              y: '-20vh',
               x: `${p.x}vw`,
               scale: [0.5, 1.2, 0.8]
             }}
@@ -153,7 +165,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
-        
+
         {/* Left Side: Text, CTAs, and Interactive Terminal Commander (7 columns) */}
         <motion.div
           variants={containerVariants}
@@ -179,7 +191,7 @@ export default function Hero() {
             className="font-display font-bold text-5xl sm:text-7xl tracking-tight text-white leading-[1.05]"
           >
             Sitansu <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accentBlue via-purple-500 to-fuchsia-400 drop-shadow-[0_0_20px_rgba(59,130,246,0.15)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accentBlue via-emerald-400 to-teal-300 drop-shadow-[0_0_20px_rgba(16,185,129,0.15)]">
               Sekhar
             </span>
           </motion.h1>
@@ -189,7 +201,7 @@ export default function Hero() {
             variants={itemVariants}
             className="mt-4 font-display font-medium text-lg sm:text-xl md:text-2xl text-zinc-100 max-w-2xl leading-relaxed"
           >
-            Fullstack Web Developer & Problem Solver
+            I Build Premium SaaS Applications, Custom Web Apps & Local Business Sites
           </motion.h2>
 
           {/* Intro Description */}
@@ -197,7 +209,7 @@ export default function Hero() {
             variants={itemVariants}
             className="mt-3 text-xs sm:text-sm md:text-base text-zinc-400 max-w-lg leading-relaxed font-light"
           >
-            I build responsive, scalable, and visually modern web applications using React, Next.js, Firebase, and modern fullstack technologies.
+            Converting complex business ideas into clean, premium, production-ready code. From scale-ready SaaS MVPs to high-converting landing pages for local gyms, clinics, design studios, and institutes.
           </motion.p>
 
           {/* Key tags row to break the standard template feel */}
@@ -207,15 +219,15 @@ export default function Hero() {
           >
             <div className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.04] text-zinc-400 text-xs">
               <Terminal className="w-3.5 h-3.5 text-accentBlue" />
-              <span>Fullstack Specialist</span>
+              <span>Fullstack Contractor</span>
             </div>
             <div className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.04] text-zinc-400 text-xs">
-              <Award className="w-3.5 h-3.5 text-accentPurple" />
-              <span>SIH '24 Finalist</span>
+              <Sparkles className="w-3.5 h-3.5 text-accentPurple" />
+              <span>SaaS & AI Developer</span>
             </div>
             <div className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.04] text-zinc-400 text-xs">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>SaaS & AI Platforms</span>
+              <span>MVP Prototyping</span>
             </div>
           </motion.div>
 
@@ -244,11 +256,11 @@ export default function Hero() {
                 <div
                   key={idx}
                   className={
-                    log.startsWith('$') 
-                      ? 'text-white font-semibold' 
-                      : log.startsWith('  /') 
-                      ? 'text-accentBlue' 
-                      : 'text-zinc-500 font-light'
+                    log.startsWith('$')
+                      ? 'text-white font-semibold'
+                      : log.startsWith('  /')
+                        ? 'text-accentBlue'
+                        : 'text-zinc-500 font-light'
                   }
                 >
                   {log}
@@ -284,6 +296,13 @@ export default function Hero() {
               <span className="mr-1 font-bold shrink-0">Quick runs:</span>
               <button
                 type="button"
+                onClick={() => handleCommand('/services')}
+                className="px-2 py-0.5 rounded-md bg-accentBlue/5 border border-accentBlue/10 hover:bg-accentBlue/10 hover:text-accentBlue transition-all font-mono text-accentBlue"
+              >
+                /services
+              </button>
+              <button
+                type="button"
                 onClick={() => handleCommand('/skills')}
                 className="px-2 py-0.5 rounded-md bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.06] hover:text-white transition-all font-mono"
               >
@@ -291,17 +310,10 @@ export default function Hero() {
               </button>
               <button
                 type="button"
-                onClick={() => handleCommand('/matrix')}
-                className="px-2 py-0.5 rounded-md bg-emerald-500/5 border border-emerald-500/10 hover:bg-emerald-500/10 hover:text-emerald-400 transition-all font-mono text-emerald-400"
+                onClick={() => handleCommand('/process')}
+                className="px-2 py-0.5 rounded-md bg-accentPurple/5 border border-accentPurple/10 hover:bg-accentPurple/10 hover:text-accentPurple transition-all font-mono text-accentPurple"
               >
-                /matrix
-              </button>
-              <button
-                type="button"
-                onClick={() => handleCommand('/projects')}
-                className="px-2 py-0.5 rounded-md bg-accentBlue/5 border border-accentBlue/10 hover:bg-accentBlue/10 hover:text-accentBlue transition-all font-mono text-accentBlue"
-              >
-                /projects
+                /process
               </button>
             </div>
           </motion.div>
@@ -312,10 +324,10 @@ export default function Hero() {
             className="mt-8 flex flex-wrap gap-4 items-center w-full sm:w-auto"
           >
             <a
-              href="mailto:sitansupanda791@gmail.com"
+              href="#contact"
               className="inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-full font-semibold bg-white text-black hover:bg-zinc-200 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto shrink-0"
             >
-              <span>Get in Touch</span>
+              <span>Start Your Project</span>
               <ArrowRight className="w-4 h-4" />
             </a>
 
@@ -352,7 +364,7 @@ export default function Hero() {
 
           {/* Main frame container */}
           <div className="relative w-full h-full rounded-[26px] p-2 bg-white/[0.01] border border-white/[0.06] backdrop-blur-xl shadow-2xl overflow-hidden group">
-            
+
             {/* Profile Image with modern transitions */}
             <div className="w-full h-full rounded-[18px] overflow-hidden relative">
               <img

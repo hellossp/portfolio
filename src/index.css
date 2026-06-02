@@ -21,7 +21,7 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: #10b981;
 }
 
 /* Noise overlay for premium textured background */
@@ -69,7 +69,7 @@
   position: absolute;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, rgba(59,130,246,0.05) 50%, transparent 100%);
+  background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(5,150,105,0.05) 50%, transparent 100%);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);

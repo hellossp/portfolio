@@ -103,10 +103,10 @@ export default function Experience() {
                 className="relative group"
               >
                 {/* Timeline Dot */}
-                <div className={`absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full ${colorClass} border-4 border-darkBg shadow-[0_0_12px_rgba(59,130,246,0.3)] group-hover:scale-125 transition-transform duration-300`} />
+                <div className={`absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full ${colorClass} border-4 border-darkBg shadow-[0_0_12px_rgba(16,185,129,0.3)] group-hover:scale-125 transition-transform duration-300`} />
 
                 {/* Card Container */}
-                <div className="glass-card rounded-2xl p-6 md:p-8 hover:shadow-[0_0_30px_rgba(124,58,237,0.03)] relative overflow-hidden">
+                <div className="glass-card rounded-2xl p-6 md:p-8 hover:shadow-[0_0_30px_rgba(16,185,129,0.03)] relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-[100px] h-[100px] bg-white/[0.01] rounded-full blur-2xl pointer-events-none" />
 
                   {/* Header */}

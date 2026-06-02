@@ -17,10 +17,11 @@ const LinkedinIcon = (props) => (
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'Services', href: '#services' },
+  { name: 'Work', href: '#/all-projects' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Research', href: '#research' },
+  { name: 'Process', href: '#process' },
+  { name: 'Reviews', href: '#testimonials' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -30,12 +31,39 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash === '#/all-projects') {
+        setActiveSection('/all-projects');
+      } else if (hash) {
+        const cleanHash = hash.replace('#/', '#');
+        setActiveSection(cleanHash.substring(1));
+      } else {
+        setActiveSection('home');
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    handleHash();
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       // Background blur trigger
       setScrolled(window.scrollY > 20);
 
+      // Only run scroll spy if not on standalone projects route
+      if (window.location.hash === '#/all-projects') return;
+
       // Scroll Spy
-      const sections = navLinks.map(link => document.querySelector(link.href));
+      const sections = navLinks.map(link => {
+        try {
+          if (link.href.includes('/')) return null;
+          return document.querySelector(link.href);
+        } catch (e) {
+          return null;
+        }
+      });
       const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {

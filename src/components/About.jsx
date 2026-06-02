@@ -23,7 +23,7 @@ export default function About() {
             </h2>
           </div>
           <p className="mt-4 md:mt-0 text-sm md:text-base text-zinc-400 max-w-md font-light leading-relaxed">
-            A look into who I am, my academic background, and the leadership experiences that shape my technical perspective.
+            A look into who I am, my freelance core principles, and the professional leadership experiences that shape my technical delivery.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2" />
                   <div>
                     <span className="text-sm font-medium text-white block">Product Thinking</span>
                     <p className="text-xs text-zinc-400 mt-0.5">Building code that directly empowers users and solves real problems.</p>
@@ -117,7 +117,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* SANKALP Fest Leadership - Span 1 col */}
+          {/* Engineering Leadership - Span 1 col */}
           <motion.div
             variants={cardVariants}
             initial="hidden"
@@ -125,27 +125,27 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className="glass-card rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group"
           >
-            <div className="absolute -bottom-10 -right-10 w-[150px] h-[150px] bg-fuchsia-500/5 rounded-full blur-[50px] -z-10 group-hover:bg-fuchsia-500/10 transition-colors duration-500" />
+            <div className="absolute -bottom-10 -right-10 w-[150px] h-[150px] bg-emerald-500/5 rounded-full blur-[50px] -z-10 group-hover:bg-emerald-500/10 transition-colors duration-500" />
             
             <div>
-              <span className="px-2.5 py-1 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-400 text-[10px] font-semibold tracking-wider uppercase inline-block mb-4">
-                Fest Leadership
+              <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-semibold tracking-wider uppercase inline-block mb-4">
+                Engineering Leadership
               </span>
-              <h3 className="font-display font-bold text-xl text-white">SANKALP Fest</h3>
-              <span className="text-xs text-zinc-400 font-medium block mt-1">Technical Lead</span>
+              <h3 className="font-display font-bold text-xl text-white">SANKALP Web Portal</h3>
+              <span className="text-xs text-zinc-400 font-medium block mt-1">Technical Team Lead</span>
               
               <p className="mt-4 text-xs md:text-sm text-zinc-400 leading-relaxed font-light">
-                Led a talented technical team of 7 engineers to design, build, and deploy the official SANKALP college festival website. Supported and handled traffic for 5000+ active student users.
+                Managed a remote 7-engineer technical squad to architect and launch a scale-ready college festival web platform. Successfully supported and routed live traffic spike bursts for 5,000+ active student registrants.
               </p>
             </div>
             
-            <div className="mt-6 flex items-center space-x-2 text-xs text-fuchsia-400 font-semibold group-hover:translate-x-1 transition-transform duration-300">
-              <span>Managed 7-person team</span>
+            <div className="mt-6 flex items-center space-x-2 text-xs text-emerald-400 font-semibold group-hover:translate-x-1 transition-transform duration-300">
+              <span>Led 7 developers to launch</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
           </motion.div>
 
-          {/* Data Science Club - Span 2 cols */}
+          {/* Technical Consulting - Span 2 cols */}
           <motion.div
             variants={cardVariants}
             initial="hidden"
@@ -159,9 +159,9 @@ export default function About() {
               <div className="flex justify-between items-start">
                 <div>
                   <span className="px-2.5 py-1 rounded-full bg-accentBlue/10 border border-accentBlue/20 text-accentBlue text-[10px] font-semibold tracking-wider uppercase inline-block mb-4">
-                    Club Leadership
+                    Technical Advisory
                   </span>
-                  <h3 className="font-display font-bold text-xl text-white">Data Science Club</h3>
+                  <h3 className="font-display font-bold text-xl text-white">Data Science & Development Club</h3>
                   <span className="text-xs text-zinc-400 font-medium block mt-1">Vice President</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
@@ -170,13 +170,13 @@ export default function About() {
               </div>
 
               <p className="mt-4 text-xs md:text-sm text-zinc-400 leading-relaxed font-light">
-                Spearheaded multiple technical activities, organized large-scale ideathons, and conducted hands-on coding workshops. Helped students bridge the gap between academic theory and active field development in Web & AI paradigms.
+                Chaired program designs, organized hackathons, and mentored startup-focused builders on APIs, DB modeling, and web architectures. Proven ability to translate complex technical jargon into clear, actionable client business strategies.
               </p>
             </div>
 
             <div className="mt-6 pt-4 border-t border-white/[0.05] flex items-center justify-between text-xs text-zinc-500 font-light">
-              <span>10+ Organized Workshops</span>
-              <span className="text-accentBlue font-medium">Empowering Student Builders</span>
+              <span>Mentored 200+ Developers</span>
+              <span className="text-accentBlue font-medium">Active Community Advising</span>
             </div>
           </motion.div>
 
