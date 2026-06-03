@@ -175,6 +175,25 @@ const projects = [
       'Adaptive training paths & courses'
     ],
     screenshot: '/projects/internova.png'
+  },
+  {
+    title: 'MediLens AI',
+    tagline: 'AI-Powered Prescription Scanning & Medicine Reference Platform',
+    desc: 'Built a bilingual healthcare information platform that enables users to upload or scan medical prescriptions and instantly retrieve detailed medicine information from a structured pharmaceutical dataset. The platform combines OCR-powered prescription analysis, fuzzy medicine matching, and a responsive multilingual interface to improve medicine accessibility and understanding.',
+    tech: ['Next.js 15', 'React 19', 'Tailwind CSS', 'Firebase Firestore', 'Tesseract OCR', 'Fuse.js', 'i18next', 'Vercel'],
+    github: 'https://github.com/hellossp',
+    demo: 'https://medi-lens-theta.vercel.app/',
+    color: 'from-teal-400 via-emerald-500 to-teal-600',
+    category: 'Integrations & AI',
+    features: [
+      'OCR-based Prescription Upload & Camera Scanning',
+      'Smart Medicine Detection with Fuzzy Search Matching',
+      'Firebase Firestore-Powered Medicine Database',
+      'English & Odia Bilingual User Experience',
+      'Responsive Mobile-First Interface',
+      'Beta-Phase Clinical Reference & Safety Information System'
+    ],
+    screenshot: '/projects/medilens.png'
   }
 ];
 
