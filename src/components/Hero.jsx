@@ -217,6 +217,16 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-wrap gap-2 mt-5"
           >
+            <a
+              href="https://www.instantpages.site/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.04] text-zinc-400 hover:text-white hover:border-emerald-500/30 transition-all duration-300 text-xs group"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform" />
+              <span>Founder, Instant Pages</span>
+              <ArrowRight className="w-3 h-3 text-zinc-500 group-hover:translate-x-0.5 transition-transform" />
+            </a>
             <div className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.04] text-zinc-400 text-xs">
               <Terminal className="w-3.5 h-3.5 text-accentBlue" />
               <span>Fullstack Contractor</span>

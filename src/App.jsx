@@ -49,7 +49,7 @@ function App() {
   useEffect(() => {
     if (!isLoading) {
       const hash = window.location.hash;
-      if (hash && hash !== '#/all-projects') {
+      if (hash && !hash.startsWith('#/')) {
         try {
           const element = document.querySelector(hash);
           if (element) {
@@ -85,40 +85,46 @@ function App() {
 
             {/* Main Sections */}
             <main>
-              {currentPath === '#/all-projects' ? (
-                /* Standalone Projects Page */
-                <Projects isFeaturedPreview={false} />
-              ) : (
-                /* Main Single Page Layout */
-                <>
-                  {/* Home / Hero */}
-                  <Hero />
+              {(() => {
+                switch (currentPath) {
+                  case '#/all-projects':
+                    return <Projects isFeaturedPreview={false} />;
+                  // To add more standalone pages in the future, just add cases here:
+                  // case '#/services':
+                  //   return <ServicesStandalone />;
+                  default:
+                    return (
+                      <>
+                        {/* Home / Hero */}
+                        <Hero />
 
-                  {/* Bio / About */}
-                  <About />
+                        {/* Bio / About */}
+                        <About />
 
-                  {/* Freelance Services */}
-                  <Services />
+                        {/* Freelance Services */}
+                        <Services />
 
-                  {/* Featured Projects / Case Studies preview */}
-                  <Projects isFeaturedPreview={true} />
+                        {/* Featured Projects / Case Studies preview */}
+                        <Projects isFeaturedPreview={true} />
 
-                  {/* Skill Matrix */}
-                  <TechStack />
+                        {/* Skill Matrix */}
+                        <TechStack />
 
-                  {/* Client Project Process */}
-                  <Process />
+                        {/* Client Project Process */}
+                        <Process />
 
-                  {/* Career Timeline */}
-                  <Experience />
+                        {/* Career Timeline */}
+                        <Experience />
 
-                  {/* Client Testimonials */}
-                  <Testimonials />
+                        {/* Client Testimonials */}
+                        <Testimonials />
 
-                  {/* Mail Form */}
-                  <Contact />
-                </>
-              )}
+                        {/* Mail Form */}
+                        <Contact />
+                      </>
+                    );
+                }
+              })()}
             </main>
 
             {/* Footer */}

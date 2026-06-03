@@ -9,7 +9,10 @@ export default function Footer() {
           <span className="font-display font-bold text-base tracking-tight text-white">
             Sitansu<span className="text-accentBlue">.dev</span>
           </span>
-          <p className="text-[10px] text-zinc-500 font-light mt-1">
+          <p className="text-[10px] text-zinc-500 font-light mt-1.5">
+            Founder of <a href="https://www.instantpages.site/" target="_blank" rel="noopener noreferrer" className="text-accentBlue hover:text-emerald-400 transition-colors font-medium">Instant Pages</a>
+          </p>
+          <p className="text-[10px] text-zinc-500 font-light mt-0.5">
             © {currentYear} Sitansu Sekhar Panda. All rights reserved.
           </p>
         </div>

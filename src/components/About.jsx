@@ -53,7 +53,7 @@ export default function About() {
               </h4>
               
               <p className="mt-6 text-sm md:text-base text-zinc-400 font-light leading-relaxed">
-                My work lies at the intersection of modern design and robust engineering. I build high-fidelity user experiences that feel alive, responsive, and tactile. Currently, I am deeply focused on building production-ready SaaS architectures, AI integrations, and product-focused client solutions.
+                My work lies at the intersection of modern design and robust engineering. I build high-fidelity user experiences that feel alive, responsive, and tactile. Currently, I am deeply focused on building production-ready SaaS architectures, AI integrations, and product-focused client solutions. I am also the founder of <a href="https://www.instantpages.site/" target="_blank" rel="noopener noreferrer" className="text-accentBlue hover:text-emerald-400 transition-colors font-medium underline underline-offset-4 decoration-emerald-500/30">Instant Pages</a>, a platform for conversion-focused, speed-optimized web solutions.
               </p>
             </div>
 

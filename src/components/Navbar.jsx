@@ -33,11 +33,8 @@ export default function Navbar() {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash;
-      if (hash === '#/all-projects') {
-        setActiveSection('/all-projects');
-      } else if (hash) {
-        const cleanHash = hash.replace('#/', '#');
-        setActiveSection(cleanHash.substring(1));
+      if (hash) {
+        setActiveSection(hash.substring(1));
       } else {
         setActiveSection('home');
       }
@@ -52,8 +49,8 @@ export default function Navbar() {
       // Background blur trigger
       setScrolled(window.scrollY > 20);
 
-      // Only run scroll spy if not on standalone projects route
-      if (window.location.hash === '#/all-projects') return;
+      // Only run scroll spy if not on standalone sub-page route
+      if (window.location.hash.startsWith('#/')) return;
 
       // Scroll Spy
       const sections = navLinks.map(link => {
