@@ -105,7 +105,7 @@ export default function Contact() {
             </span>
           </h2>
           <p className="mt-4 text-sm md:text-base text-zinc-400 font-light leading-relaxed">
-            Have an idea, project requirements, or a consulting need? Fill out the details below to receive a custom proposal and quote.
+            Looking for internships, open-source collaborations, or freelance opportunities? Drop me a message!
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export default function Contact() {
               <div>
                 <span className="text-[10px] text-zinc-500 uppercase block font-semibold">Location</span>
                 <span className="text-sm font-semibold text-white mt-1 block">Berhampur, Odisha, India</span>
-                <span className="text-xs text-zinc-400 font-light mt-0.5 block">Available for Remote / On-site Contracts</span>
+                <span className="text-xs text-zinc-400 font-light mt-0.5 block">Open to Internships & Remote Roles</span>
               </div>
             </motion.div>
 
@@ -221,28 +221,28 @@ export default function Contact() {
                     className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
                   />
                 </div>
-              </div>              {/* Freelance Specific Lead Qualifiers */}
+              </div>              {/* Inquiry Lead Qualifiers */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                  <label htmlFor="projectType" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Project Type</label>
+                  <label htmlFor="projectType" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Inquiry Type</label>
                   <input
                     type="text"
                     id="projectType"
                     value={form.projectType}
                     onChange={(e) => setForm({ ...form, projectType: e.target.value })}
-                    placeholder="e.g. Gym Portal, SaaS, Clinic Site"
+                    placeholder="e.g. Internship, Freelance, Collab"
                     className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="budget" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Est. Budget</label>
+                  <label htmlFor="budget" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Est. Budget (if freelance)</label>
                   <input
                     type="text"
                     id="budget"
                     value={form.budget}
                     onChange={(e) => setForm({ ...form, budget: e.target.value })}
-                    placeholder="e.g. $1,000, Flexible, etc."
+                    placeholder="e.g. $1,000, N/A, Flexible"
                     className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
                   />
                 </div>
@@ -254,21 +254,21 @@ export default function Contact() {
                     id="timeline"
                     value={form.timeline}
                     onChange={(e) => setForm({ ...form, timeline: e.target.value })}
-                    placeholder="e.g. 3 weeks, Flexible, etc."
+                    placeholder="e.g. 3 weeks, Immediate, Flexible"
                     className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Project Brief / Description</label>
+                <label htmlFor="message" className="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold block mb-2">Inquiry / Message Details</label>
                 <textarea
                   id="message"
                   required
                   rows="4"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  placeholder="Tell me about your product requirements, user goals, and how I can help..."
+                  placeholder="Tell me about your project, internship role, or how we can collaborate..."
                   className="w-full bg-[#121214] border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors duration-300 resize-none"
                 />
               </div>

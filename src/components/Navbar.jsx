@@ -139,7 +139,7 @@ export default function Navbar() {
               href="#contact"
               className="px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-black hover:bg-zinc-200 transition-all duration-300 shadow-md hover:shadow-white/10"
             >
-              Let's talk
+              Say Hello
             </a>
           </div>
 
@@ -211,7 +211,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="w-full py-3 rounded-full font-semibold text-center bg-white text-black hover:bg-zinc-200 transition-all duration-300"
               >
-                Let's talk
+                Say Hello
               </a>
             </motion.div>
           </motion.div>

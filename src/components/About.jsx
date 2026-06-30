@@ -23,7 +23,7 @@ export default function About() {
             </h2>
           </div>
           <p className="mt-4 md:mt-0 text-sm md:text-base text-zinc-400 max-w-md font-light leading-relaxed">
-            A look into who I am, my freelance core principles, and the professional leadership experiences that shape my technical delivery.
+            A look into my journey as a student developer, building real-world projects, and leading university tech communities.
           </p>
         </div>
 
@@ -49,11 +49,11 @@ export default function About() {
               </div>
               
               <h4 className="text-xl md:text-2xl font-display text-zinc-200 leading-snug">
-                I am a passionate <span className="text-white font-semibold">Fullstack Web Developer</span> and <span className="text-white font-semibold">Software Engineer</span> specializing in scalable web architectures and building robust systems.
+                I am a passionate <span className="text-white font-semibold">CS student</span> and <span className="text-white font-semibold">Web Developer</span> specializing in building modern web applications, learning system design, and exploring new technologies.
               </h4>
               
               <p className="mt-6 text-sm md:text-base text-zinc-400 font-light leading-relaxed">
-                My work lies at the intersection of modern design and robust engineering. I build high-fidelity user experiences that feel alive, responsive, and tactile. Currently, I am deeply focused on building production-ready SaaS architectures, AI integrations, and product-focused client solutions. I am also the founder of <a href="https://www.instantpages.site/" target="_blank" rel="noopener noreferrer" className="text-accentBlue hover:text-emerald-400 transition-colors font-medium underline underline-offset-4 decoration-emerald-500/30">Instant Pages</a>, a platform for conversion-focused, speed-optimized web solutions.
+                My work lies at the intersection of learning modern engineering and building beautiful interfaces. I love taking projects from concept to working prototypes. Currently, I am a Computer Science undergraduate focused on frontend design, API development, and web fundamentals. I am also the creator of several personal projects including <a href="https://www.instantpages.site/" target="_blank" rel="noopener noreferrer" className="text-accentBlue hover:text-emerald-400 transition-colors font-medium underline underline-offset-4 decoration-emerald-500/30">Instant Pages</a>, a speed-optimized page template experiment.
               </p>
             </div>
 

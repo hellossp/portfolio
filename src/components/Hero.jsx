@@ -44,19 +44,19 @@ export default function Hero() {
     switch (cleanCmd) {
       case '/help':
         response.push('Available commands:');
-        response.push('  /services - See my freelance service packages');
+        response.push('  /services - View my services & collaboration areas');
         response.push('  /skills   - Display primary technology toolkit');
         response.push('  /projects - Scroll down to projects portfolio');
-        response.push('  /process  - Learn how I run custom client projects');
+        response.push('  /process  - Learn my development & testing process');
         response.push('  /matrix   - Trigger glowing neon screen cascades');
         response.push('  /clear    - Flush terminal console history');
         break;
       case '/services':
-        response.push('Freelance Offerings:');
-        response.push('  1. Custom MVP Development for Startups');
-        response.push('  2. Full-Stack SaaS Apps (React, Next.js, Node.js)');
-        response.push('  3. Third-party Integrations (Auth, DBs, Payment APIs)');
-        response.push('  4. Budget-Friendly Local Business Websites');
+        response.push('Collaboration & Dev Focus:');
+        response.push('  1. Custom Web Projects & Prototypes');
+        response.push('  2. Full-Stack Development (React, Next.js, Node.js)');
+        response.push('  3. Third-party API Integrations (Auth, Database, Payments)');
+        response.push('  4. Performance & Design Optimization');
         setTimeout(() => {
           document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
         }, 800);
@@ -180,7 +180,7 @@ export default function Hero() {
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[10px] md:text-xs font-semibold text-zinc-300 tracking-wider uppercase">
-              Open to contracts & product building
+              CS Undergrad & Fullstack Builder
             </span>
             <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:translate-x-1 transition-transform duration-300" />
           </motion.div>
@@ -201,7 +201,7 @@ export default function Hero() {
             variants={itemVariants}
             className="mt-4 font-display font-medium text-lg sm:text-xl md:text-2xl text-zinc-100 max-w-2xl leading-relaxed"
           >
-            I Build Premium SaaS Applications, Custom Web Apps & Local Business Sites
+            I Build Web Apps, Solve Real-World Problems & Learn Daily
           </motion.h2>
 
           {/* Intro Description */}
@@ -209,7 +209,7 @@ export default function Hero() {
             variants={itemVariants}
             className="mt-3 text-xs sm:text-sm md:text-base text-zinc-400 max-w-lg leading-relaxed font-light"
           >
-            Converting complex business ideas into clean, premium, production-ready code. From scale-ready SaaS MVPs to high-converting landing pages for local gyms, clinics, design studios, and institutes.
+            Passionate computer science student building functional, clean, and interactive web projects. Exploring frontend UI, full-stack systems, and modern AI/cloud integrations.
           </motion.p>
 
           {/* Key tags row to break the standard template feel */}
@@ -224,20 +224,20 @@ export default function Hero() {
               className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.04] text-zinc-400 hover:text-white hover:border-emerald-500/30 transition-all duration-300 text-xs group"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform" />
-              <span>Founder, Instant Pages</span>
+              <span>Student & Creator, Instant Pages</span>
               <ArrowRight className="w-3 h-3 text-zinc-500 group-hover:translate-x-0.5 transition-transform" />
             </a>
             <div className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.04] text-zinc-400 text-xs">
               <Terminal className="w-3.5 h-3.5 text-accentBlue" />
-              <span>Fullstack Contractor</span>
+              <span>Fullstack Developer</span>
             </div>
             <div className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.04] text-zinc-400 text-xs">
               <Sparkles className="w-3.5 h-3.5 text-accentPurple" />
-              <span>SaaS & AI Developer</span>
+              <span>AI & Web Explorer</span>
             </div>
             <div className="flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white/[0.02] border border-white/[0.04] text-zinc-400 text-xs">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>MVP Prototyping</span>
+              <span>Open Source Contributor</span>
             </div>
           </motion.div>
 

@@ -4,29 +4,29 @@ import { Code2, Cpu, Globe, Rocket, ShieldCheck, Zap } from 'lucide-react';
 
 const services = [
   {
-    title: 'MVP Development for Startups',
-    desc: 'Launch your product to market rapidly without sacrificing code quality. I build functional, high-fidelity prototypes that validate your ideas with real users.',
+    title: 'MVP & Startup Prototypes',
+    desc: 'Launch your product to market rapidly. As a student builder, I create functional prototypes that validate your ideas with real users using lightweight, modern setups.',
     features: ['Rapid prototyping loops', 'Authentication & database setup', 'Scale-ready frontends'],
     color: 'from-emerald-400 to-teal-500',
     icon: <Rocket className="w-6 h-6 text-emerald-400" />
   },
   {
-    title: 'Full-Stack SaaS Applications',
-    desc: 'Build complex, multi-tenant software with dashboards, user permissions, analytics integrations, and clean state management using Next.js and Node.js.',
+    title: 'Full-Stack Web Apps',
+    desc: 'Build responsive web applications with interactive dashboards, database integrations, and clean state management using React, Next.js, and Node.js.',
     features: ['Next.js App Router & SSR', 'Role-based access controls', 'Real-time database sync'],
     color: 'from-teal-400 to-emerald-600',
     icon: <Globe className="w-6 h-6 text-teal-400" />
   },
   {
-    title: 'API & Gateway Integrations',
-    desc: 'Integrate third-party systems seamlessly, including secure payment pathways (Cashfree, Stripe), custom OCR parsing, REST/GraphQL APIs, and authentication flows.',
+    title: 'API & System Integrations',
+    desc: 'Connect third-party systems seamlessly, including secure payment gateways, database hooks, document processing, and cloud function integrations.',
     features: ['Secure checkout processors', 'Document processing pipelines', 'Robust webhook handlers'],
     color: 'from-emerald-500 to-teal-600',
     icon: <Cpu className="w-6 h-6 text-emerald-500" />
   },
   {
-    title: 'Budget-Friendly Local Sites',
-    desc: 'Custom web development and landing pages for local brands (gyms, coaching institutes, interior designers, clinics, and doctors) looking to grow their local client base.',
+    title: 'Websites for Local Brands',
+    desc: 'Custom web development and landing pages for local brands (gyms, cafes, clinics, institutes) looking to build an online presence without high agency fees.',
     features: ['Local SEO & conversion layouts', 'Booking page integrations', 'Mobile-first responsive layouts'],
     color: 'from-teal-500 to-emerald-400',
     icon: <Zap className="w-6 h-6 text-teal-500" />
@@ -116,7 +116,7 @@ export default function Services() {
             </h2>
           </div>
           <p className="mt-4 md:mt-0 text-sm md:text-base text-zinc-400 max-w-sm font-light leading-relaxed">
-            Tailored software solutions designed to solve business bottlenecks, qualify metrics, and launch on schedule.
+            From academic projects to freelance solutions, I build functional applications while focusing on clean code and modern tech stacks.
           </p>
         </div>
 
